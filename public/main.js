@@ -241,8 +241,9 @@ $(function() {
     // Whenever the server emits 'new message', update the chat body
     socket.on('new message', (data) => {
       console.log(data);
+      const message = JSON.parse(data);
       const title = "Notification";
-      const text = `${JSON.stringify(data)}`;
+      const text = `${message.message}`;
       const icon = "https://img.icons8.com/fluency/48/null/filled-chat.png";
       new Notification(title, {body: text, icon: icon});
       addChatMessage(data);
