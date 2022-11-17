@@ -243,7 +243,7 @@ $(function() {
       console.log(data);
       const message = JSON.parse(data);
       const title = "Notification";
-      const text = `${message.message}`;
+      const text = `${message.message.message}`;
       const icon = "https://img.icons8.com/fluency/48/null/filled-chat.png";
       new Notification(title, {body: text, icon: icon});
       addChatMessage(data);
