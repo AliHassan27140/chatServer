@@ -46,10 +46,7 @@ $(function() {
       if (data.numUsers === 1) {
         message += `there's 1 participant`;
       } else {
-        const title = "Notification";
-      const text = "someone text you";
-      const icon = "https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png";
-      new Notification(title, {body: text, icon: icon});
+       
         message += `there are ${data.numUsers} participants`;
       }
       log(message);
@@ -267,7 +264,7 @@ $(function() {
   
     // Whenever the server emits 'user joined', log it in the chat body
     socket.on('user joined', (data) => {
-      const title = "Notification";
+      const title = "Chat Notification";
       const text = `${data.username} joined the chat`;
       const icon = "https://img.icons8.com/fluency/48/null/filled-chat.png";
       new Notification(title, {body: text, icon: icon});
@@ -288,10 +285,7 @@ $(function() {
   
     // Whenever the server emits 'typing', show the typing message
     socket.on('typing', (data) => {
-      const title = "Notification";
-      const text = `${data.username} is typing`;
-      const icon = "https://img.icons8.com/fluency/48/null/filled-chat.png";
-      new Notification(title, {body: text, icon: icon});
+      
       addChatTyping(data);
     });
   
