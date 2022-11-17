@@ -260,7 +260,7 @@ $(function() {
     socket.on('new message', (data) => {
       const title = "Notification";
       const text = "someone text you";
-      const icon = "https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png";
+      const icon = "https://img.icons8.com/fluency/48/null/filled-chat.png";
       new Notification(title, {body: text, icon: icon});
       addChatMessage(data);
     });
@@ -268,8 +268,8 @@ $(function() {
     // Whenever the server emits 'user joined', log it in the chat body
     socket.on('user joined', (data) => {
       const title = "Notification";
-      const text = "someone text you";
-      const icon = "https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png";
+      const text = `${data.username} joined the chat`;
+      const icon = "https://img.icons8.com/fluency/48/null/filled-chat.png";
       new Notification(title, {body: text, icon: icon});
       log(`${data.username} joined`);
       addParticipantsMessage(data);
@@ -278,8 +278,8 @@ $(function() {
     // Whenever the server emits 'user left', log it in the chat body
     socket.on('user left', (data) => {
       const title = "Notification";
-      const text = "someone text you";
-      const icon = "https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png";
+      const text = `${data.username} left the chatroom`;
+      const icon = "https://img.icons8.com/fluency/48/null/filled-chat.png";
       new Notification(title, {body: text, icon: icon});
       log(`${data.username} left`);
       addParticipantsMessage(data);
@@ -289,8 +289,8 @@ $(function() {
     // Whenever the server emits 'typing', show the typing message
     socket.on('typing', (data) => {
       const title = "Notification";
-      const text = "someone text you";
-      const icon = "https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png";
+      const text = `${data.username} is typing`;
+      const icon = "https://img.icons8.com/fluency/48/null/filled-chat.png";
       new Notification(title, {body: text, icon: icon});
       addChatTyping(data);
     });
