@@ -28,19 +28,7 @@ $(function() {
     let $currentInput = $usernameInput.focus();
   
    
-    $("#nofication").click(function(){
-      console.log("clicked");
-      const title = "Notification";
-      const text = "someone text you";
-      const icon = "https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png";
-      new Notification(title, {body: text, icon: icon});
-      // createNotification(title, text, icon);
-      const createNotification = (title, text, icon) => {
-        const noti = new Notification(title, {
-          body: text,
-          icon
-        });}
-    });
+    
     const addParticipantsMessage = (data) => {
       let message = '';
       if (data.numUsers === 1) {
@@ -79,10 +67,7 @@ $(function() {
         addChatMessage({ username, message });
         // tell server to execute 'new message' and send along one parameter
         socket.emit('new message', message);
-        const title = "Notification";
-      const text = "someone text you";
-      const icon = "https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png";
-      new Notification(title, {body: text, icon: icon});
+        
       }
     }
   
@@ -256,7 +241,7 @@ $(function() {
     // Whenever the server emits 'new message', update the chat body
     socket.on('new message', (data) => {
       const title = "Notification";
-      const text = "someone text you";
+      const text = `${data}`;
       const icon = "https://img.icons8.com/fluency/48/null/filled-chat.png";
       new Notification(title, {body: text, icon: icon});
       addChatMessage(data);
