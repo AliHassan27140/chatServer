@@ -1,6 +1,5 @@
 
 $(function() {
-
     const FADE_TIME = 150; // ms
     const TYPING_TIMER_LENGTH = 400; // ms
     const COLORS = [
@@ -240,31 +239,17 @@ $(function() {
   
     // Whenever the server emits 'new message', update the chat body
     socket.on('new message', (data) => {
-      console.log(data);
-      const message = JSON.parse(data);
-      const title = "Notification";
-      const text = `${message.message.message}`;
-      const icon = "https://img.icons8.com/fluency/48/null/filled-chat.png";
-      new Notification(title, {body: text, icon: icon});
       addChatMessage(data);
     });
   
     // Whenever the server emits 'user joined', log it in the chat body
     socket.on('user joined', (data) => {
-      const title = "Chat Notification";
-      const text = `${data.username} joined the chat`;
-      const icon = "https://img.icons8.com/fluency/48/null/filled-chat.png";
-      new Notification(title, {body: text, icon: icon});
       log(`${data.username} joined`);
       addParticipantsMessage(data);
     });
   
     // Whenever the server emits 'user left', log it in the chat body
     socket.on('user left', (data) => {
-      const title = "Notification";
-      const text = `${data.username} left the chatroom`;
-      const icon = "https://img.icons8.com/fluency/48/null/filled-chat.png";
-      new Notification(title, {body: text, icon: icon});
       log(`${data.username} left`);
       addParticipantsMessage(data);
       removeChatTyping(data);
@@ -272,7 +257,6 @@ $(function() {
   
     // Whenever the server emits 'typing', show the typing message
     socket.on('typing', (data) => {
-      
       addChatTyping(data);
     });
   
