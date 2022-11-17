@@ -1,4 +1,6 @@
+
 $(function() {
+
     const FADE_TIME = 150; // ms
     const TYPING_TIMER_LENGTH = 400; // ms
     const COLORS = [
@@ -6,7 +8,7 @@ $(function() {
       '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
       '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
     ];
-  
+   
     // Initialize variables
     const $window = $(window);
     const $usernameInput = $('.usernameInput'); // Input for username
@@ -25,11 +27,29 @@ $(function() {
     let lastTypingTime;
     let $currentInput = $usernameInput.focus();
   
+   
+    $("#nofication").click(function(){
+      console.log("clicked");
+      const title = "Notification";
+      const text = "someone text you";
+      const icon = "https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png";
+      new Notification(title, {body: text, icon: icon});
+      // createNotification(title, text, icon);
+      const createNotification = (title, text, icon) => {
+        const noti = new Notification(title, {
+          body: text,
+          icon
+        });}
+    });
     const addParticipantsMessage = (data) => {
       let message = '';
       if (data.numUsers === 1) {
         message += `there's 1 participant`;
       } else {
+        const title = "Notification";
+      const text = "someone text you";
+      const icon = "https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png";
+      new Notification(title, {body: text, icon: icon});
         message += `there are ${data.numUsers} participants`;
       }
       log(message);
@@ -62,6 +82,10 @@ $(function() {
         addChatMessage({ username, message });
         // tell server to execute 'new message' and send along one parameter
         socket.emit('new message', message);
+        const title = "Notification";
+      const text = "someone text you";
+      const icon = "https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png";
+      new Notification(title, {body: text, icon: icon});
       }
     }
   
@@ -234,17 +258,29 @@ $(function() {
   
     // Whenever the server emits 'new message', update the chat body
     socket.on('new message', (data) => {
+      const title = "Notification";
+      const text = "someone text you";
+      const icon = "https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png";
+      new Notification(title, {body: text, icon: icon});
       addChatMessage(data);
     });
   
     // Whenever the server emits 'user joined', log it in the chat body
     socket.on('user joined', (data) => {
+      const title = "Notification";
+      const text = "someone text you";
+      const icon = "https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png";
+      new Notification(title, {body: text, icon: icon});
       log(`${data.username} joined`);
       addParticipantsMessage(data);
     });
   
     // Whenever the server emits 'user left', log it in the chat body
     socket.on('user left', (data) => {
+      const title = "Notification";
+      const text = "someone text you";
+      const icon = "https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png";
+      new Notification(title, {body: text, icon: icon});
       log(`${data.username} left`);
       addParticipantsMessage(data);
       removeChatTyping(data);
@@ -252,6 +288,10 @@ $(function() {
   
     // Whenever the server emits 'typing', show the typing message
     socket.on('typing', (data) => {
+      const title = "Notification";
+      const text = "someone text you";
+      const icon = "https://www.studytonight.com/css/resource.v2/icons/studytonight/st-icon-dark.png";
+      new Notification(title, {body: text, icon: icon});
       addChatTyping(data);
     });
   
